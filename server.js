@@ -3,6 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//this port is for heroku as it requires a dynamic port
 const port = process.env.PORT || 3000;
 var app = express();
 
@@ -50,6 +51,12 @@ app.get('/about', (req, res) => {
       pageTitle: 'About Page',
     });
   });
+
+app.get('/project',(req, res) => {
+    res.render('project.hbs', {
+        pageTitle:'Project Page',
+    });
+})
 
 app.get('/bad',(req, res)=> {
     res.send({
